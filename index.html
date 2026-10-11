@@ -422,7 +422,6 @@
       width: 100%;
       z-index: 50;
       transition: padding 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background 0.3s ease;
-      overflow: hidden;
     }
 
     /* 7. Sticky Navbar Animation: Scrolled state */
@@ -1885,35 +1884,63 @@
         display: none !important;
       }
 
+      .nav-right-group {
+        position: static;
+      }
+
       .menu-toggle {
         display: inline-flex;
-        height: 38px;
-        width: 38px;
+        height: 40px;
+        width: 40px;
+        background: rgba(250, 243, 230, 0.12);
+        border: 1px solid rgba(200, 160, 77, 0.4);
+        border-radius: 50%;
+        color: var(--ivory);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+        z-index: 52;
       }
 
       .nav-links {
         background: rgba(18, 59, 43, 0.98);
-        border-bottom: 1px solid rgba(200, 160, 77, 0.28);
-        display: grid;
+        border-top: 1px solid rgba(200, 160, 77, 0.3);
+        border-bottom: 2px solid rgba(200, 160, 77, 0.4);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+        display: flex;
+        flex-direction: column;
         gap: 0;
         left: 0;
+        right: 0;
+        width: 100%;
         max-height: 0;
         overflow: hidden;
         position: absolute;
-        right: 0;
-        top: 59px;
-        transition: max-height 0.18s ease;
+        top: 100%;
+        transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 49;
       }
 
-      .nav-links.open { max-height: 320px; }
+      .nav-links.open {
+        max-height: 380px;
+        opacity: 1;
+        pointer-events: auto;
+      }
 
       .nav-links li {
         border-top: 1px solid rgba(250, 243, 230, 0.08);
+        width: 100%;
+        text-align: left;
       }
 
       .nav-links a {
         display: block;
-        padding: 15px 22px;
+        padding: 14px 22px;
+        font-size: 1rem;
+        color: var(--ivory);
       }
 
       .hero {
@@ -2223,10 +2250,6 @@
         </a>
       </div>
 
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-
       <div class="nav-right-group">
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
@@ -2240,6 +2263,11 @@
         <span class="nav-lotus" title="Pavitra Kamal" aria-hidden="true">🪷</span>
         <!-- 1. Floating Golden Diya (Right End) -->
         <span class="nav-diya" title="Shubh Navratri Diya" aria-hidden="true">🪔</span>
+
+        <!-- Mobile hamburger menu toggle -->
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </nav>
